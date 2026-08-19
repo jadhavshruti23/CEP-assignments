@@ -2,8 +2,9 @@ import re
 def read_file(filename):
     file=open(filename,'r')
     f=file.read()
-    print(f)
     file.close()
+    return f
+    
 
 def write_file(filename):
     file=open(filename,'w')
@@ -45,7 +46,7 @@ def format_file(filename):
     f=file.read()
     edited_text=re.sub(r'\s+', ' ', f).strip()
     file.close()
-    file = open(filename, 'a')
+    file = open(filename, 'w')
     file.write(edited_text)
     file.close()
     print("Text has been formatted")
@@ -58,19 +59,20 @@ def replace_in_file(filename):
     f=file.read()
     new_text=re.sub(old, new, f)
     file.close()
-    file = open(filename, 'a')
+    file = open(filename, 'w')
     file.write(new_text)
     file.close()
     print("Replaced successfully ")
     print(new_text)
 
+fh=input("Enter the filename with extension : ")
+print("This program contains following functions")
+print("1.Read a file \n 2.Write in a file \n 3.Search in a file \n 4.Find Email \n5.Find phone no. \n 6.Format a file  \n 7.Replace the old content of a file with new \n 8.Exit")
 def main_menu():
-    fh=input("Enter the filename with extension : ")
-    print("This program contains following functions")
-    print("1.Read a file \n 2.Write in a file \n 3.Search in a file \n 4.Find Email \n5.Find phone no. \n 6.Format a file  \n 7.Replace the old content of a file with new \n 8.Exit")
     ch=int(input("Enter your choice : "))
     if ch==1:
         read_file(fh)
+        print(read_file(fh))
     elif ch==2:
         write_file(fh)
     elif ch==3:
